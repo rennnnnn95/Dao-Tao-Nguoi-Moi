@@ -43,350 +43,622 @@
     button.print{padding:8px 12px;border-radius:6px;border:0;background:#eee;cursor:pointer}
     .caption{font-size:13px;color:#555;margin-top:6px}
     .signature{margin-top:12px;font-size:13px;color:#6b7280;border-top:1px dashed #e6eef8;padding-top:10px}
+
+    /* language tabs */
+    .langtabs { display:flex; gap:8px; margin-bottom:12px; }
+    .langtabs button {
+      padding:8px 12px;
+      border-radius:8px;
+      border:1px solid #ddd;
+      background:#fff;
+      cursor:pointer;
+      font-weight:600;
+    }
+    .langtabs button.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="brand">Prepared by <strong>Ren ♥</strong></div>
 
-    <div class="card">
-      <h1>Quy trình duyệt đơn rút tiền — Hướng dẫn cho người mới</h1>
-      <div class="meta">Mục tiêu: hướng dẫn tuần tự (Bước 1 → Bước 7). Mỗi bước kèm hình minh họa. Click vào ảnh để phóng to.</div>
+    <!-- language selector -->
+    <div class="langtabs" role="tablist" aria-label="Language tabs">
+      <button id="tab-en" class="active" onclick="showTab('en')" aria-controls="content-en">BẢNG TIẾNG ANH</button>
+      <button id="tab-cn" onclick="showTab('cn')" aria-controls="content-cn">BẢNG TIẾNG TRUNG</button>
     </div>
 
-    <!-- STEP 1 -->
-    <div class="card">
-      <div class="step">
-        <div>
-          <h2>Bước 1 — Mở danh sách đơn chờ xử lý</h2>
-          <div class="meta">Vào <strong>Operation Management → Withdrawal Management → Withdrawal Orders</strong> để xem các đơn <em>Pending Review</em>. Chỉ thao tác với dòng không có biểu tượng khóa.</div>
-          <div class="controls">
-            <span class="badge">Tip</span>
-            <small class="note" style="margin-left:8px">Tại cột Time, nhấn vào button ▲ để sắp xếp đơn theo thứ tự từ cũ đến mới (đảm bảo các đơn cũ được xử lý trước).</small>
-          </div>
-          <div class="checklist">
-            <label><input type="checkbox" /> Đảm bảo đang ở tab <strong>Withdrawal Orders</strong></label>
-            <label><input type="checkbox" /> Lọc trạng thái = <em>Pending Review</em></label>
-          </div>
-        </div>
-
-        <div>
-          <img src="https://i.ibb.co/27vgD7r3/B-c-1.png" alt="Bước 1 - Withdrawal Orders" onclick="openModal(event,this)" />
-          <div class="caption">Hình: danh sách Withdrawal Orders.</div>
-        </div>
+    <!-- English content (original) -->
+    <div id="content-en">
+      <div class="card">
+        <h1>Quy trình duyệt đơn rút tiền — Hướng dẫn cho người mới</h1>
+        <div class="meta">Mục tiêu: hướng dẫn tuần tự (Bước 1 → Bước 7). Mỗi bước kèm hình minh họa. Click vào ảnh để phóng to.</div>
       </div>
-    </div>
 
-    <!-- STEP 1.1 -->
-    <div class="card">
-      <div class="step">
-        <div>
-          <h2>Bước 1.1 — Kiểm tra dòng đơn</h2>
-          <div class="meta">Chỉ chọn các đơn chưa bị khoá; tránh thao tác lên dòng có icon khóa.</div>
-          <div class="checklist">
-            <label><input type="checkbox" /> Kiểm tra biểu tượng khoá</label>
-            <label><input type="checkbox" /> Chỉ chọn đơn không khóa</label>
-            <label><input type="checkbox" /> Nhấn <strong>Query</strong> để xem chi tiết</label>
+      <!-- STEP 1 -->
+      <div class="card">
+        <div class="step">
+          <div>
+            <h2>Bước 1 — Mở danh sách đơn chờ xử lý</h2>
+            <div class="meta">Vào <strong>Operation Management → Withdrawal Management → Withdrawal Orders</strong> để xem các đơn <em>Pending Review</em>. Chỉ thao tác với dòng không có biểu tượng khóa.</div>
+            <div class="controls">
+              <span class="badge">Tip</span>
+              <small class="note" style="margin-left:8px">Tại cột Time, nhấn vào button ▲ để sắp xếp đơn theo thứ tự từ cũ đến mới (đảm bảo các đơn cũ được xử lý trước).</small>
+            </div>
+            <div class="checklist">
+              <label><input type="checkbox" /> Đảm bảo đang ở tab <strong>Withdrawal Orders</strong></label>
+              <label><input type="checkbox" /> Lọc trạng thái = <em>Pending Review</em></label>
+            </div>
+          </div>
 
-            <span class="badge warn" style="display:inline-block;margin-top:8px;padding:8px 12px"><h2><strong>👉 Mục tiêu BƯỚC 1:</strong> Tìm đơn rút tiền cần được xét duyệt để mở xem chi tiết.</h2></span>
+          <div>
+            <img src="https://i.ibb.co/27vgD7r3/B-c-1.png" alt="Bước 1 - Withdrawal Orders" onclick="openModal(event,this)" />
+            <div class="caption">Hình: danh sách Withdrawal Orders.</div>
           </div>
         </div>
-        <div>
-          <img src="https://i.ibb.co/SwyyYyjj/B-c-1-1.png" alt="Bước 1.1" onclick="openModal(event,this)" />
-          <div class="caption">Hình: nhận diện đơn chưa khóa, nút <b>Query</b> mở chi tiết đơn.</div>
-        </div>
       </div>
-    </div>
 
-    <!-- STEP 1.2 -->
-    <div class="card">
-      <div class="step">
-        <div>
-          <h2>Giới thiệu sơ bộ tổng quan về thành viên.</h2>
-          <div class="meta"><strong>Mục đích:</strong> Nhìn nhanh tình trạng tài khoản, không dùng để quyết định duyệt.</div>
-          <div class="checklist">
-<b>Các mục cần hiểu:</b>
-            <ul>
-  <li><b>User UID:</b> Mã người dùng.</li>
-  <li><b>Total Flow Amount:</b> Tổng tiền đã cược.</li>
-  <li><b>Total Withdrawal Amount:</b> Tổng tiền đã rút. <i>(Ví dụ ảnh bên: Tổng rút: 48.760 (Đã rút 46.260, Đang rút 500). Trường hợp thành viên lần đầu rút tiền thì mục <b>Withdrawn = 0 → rút lần đầu.</b>)</i></li>
-  <li><b>Registration Time:</b> Thời gian đăng ký.</li>
-  <li><b>Login Time:</b> Lần đăng nhập gần nhất.</li>
-  <li><b>input.withdrawalRemark:</b> Ghi chú rút tiền của thành viên.</li>
-  <li><b>Total Recharge Amount:</b> Tổng tiền đã nạp.</li>
- <li><b>Channel Source:</b> Kênh đăng ký.</li>
- <li><b>Current Cash Balance:</b> Số dư hiện tại.</li>
- <li><b>Recharge & Withdrawal Difference:</b> Số tiền thắng/thua từ nền tảng (<b>Số âm màu đỏ → Thành viên đang lãi</b>, <i>ví dụ ảnh bên -6,060 → lãi 6,060).</i></li>
-  </ul>
+      <!-- STEP 1.1 -->
+      <div class="card">
+        <div class="step">
+          <div>
+            <h2>Bước 1.1 — Kiểm tra dòng đơn</h2>
+            <div class="meta">Chỉ chọn các đơn chưa bị khoá; tránh thao tác lên dòng có icon khóa.</div>
+            <div class="checklist">
+              <label><input type="checkbox" /> Kiểm tra biểu tượng khoá</label>
+              <label><input type="checkbox" /> Chỉ chọn đơn không khóa</label>
+              <label><input type="checkbox" /> Nhấn <strong>Query</strong> để xem chi tiết</label>
+
+              <span class="badge warn" style="display:inline-block;margin-top:8px;padding:8px 12px"><strong>👉 Mục tiêu BƯỚC 1:</strong> Tìm đơn rút tiền cần được xét duyệt để mở xem chi tiết.</span>
+            </div>
+          </div>
+          <div>
+            <img src="https://i.ibb.co/SwyyYyjj/B-c-1-1.png" alt="Bước 1.1" onclick="openModal(event,this)" />
+            <div class="caption">Hình: nhận diện đơn chưa khóa, nút <b>Query</b> mở chi tiết đơn.</div>
           </div>
         </div>
-        <div>
-          <img src="https://i.ibb.co/PzMDrsfK/B-c-1-2.png" alt="Bước 1.2 - Query" onclick="openModal(event,this)" />
-          <div class="caption">Hình: Thông tin cơ bản tổng quan về thành viên.</div>
-        </div>
       </div>
-    </div>
 
-    <!-- STEP 2 -->
-    <div class="card">
-      <div class="step">
-        <div>
-          <h2>Bước 2 — Kiểm tra tổng quan thông tin người dùng (rút gọn)</h2>
-          <div class="meta">Chỉ quan tâm 4 mục chính: <strong>Total Withdrawal Amount, Total Recharge Amount, Current Cash Balance, Recharge & Withdrawal Difference</strong>.</div>
-          <div class="checklist">
-            <label><input type="checkbox" /> Total Withdrawal Amount (đã rút / đang rút)</label>
-            <label><input type="checkbox" /> Total Recharge Amount (tổng nạp)</label>
-            <label><input type="checkbox" /> Current Cash Balance (số dư hiện tại)</label>
-            <label><input type="checkbox" /> Recharge & Withdrawal Difference (thắng / thua)</label>
+      <!-- STEP 1.2 -->
+      <div class="card">
+        <div class="step">
+          <div>
+            <h2>Giới thiệu sơ bộ tổng quan về thành viên.</h2>
+            <div class="meta"><strong>Mục đích:</strong> Nhìn nhanh tình trạng tài khoản, không dùng để quyết định duyệt.</div>
+            <div class="checklist">
+  <b>Các mục cần hiểu:</b>
+              <ul>
+      <li><b>User UID:</b> Mã người dùng.</li>
+      <li><b>Total Flow Amount:</b> Tổng tiền đã cược.</li>
+      <li><b>Total Withdrawal Amount:</b> Tổng tiền đã rút. <i>(Ví dụ ảnh bên: Tổng rút: 48.760 (Đã rút 46.260, Đang rút 500). Trường hợp thành viên lần đầu rút tiền thì mục <b>Withdrawn = 0 → rút lần đầu.</b>)</i></li>
+      <li><b>Registration Time:</b> Thời gian đăng ký.</li>
+      <li><b>Login Time:</b> Lần đăng nhập gần nhất.</li>
+      <li><b>input.withdrawalRemark:</b> Ghi chú rút tiền của thành viên.</li>
+      <li><b>Total Recharge Amount:</b> Tổng tiền đã nạp.</li>
+     <li><b>Channel Source:</b> Kênh đăng ký.</li>
+     <li><b>Current Cash Balance:</b> Số dư hiện tại.</li>
+     <li><b>Recharge & Withdrawal Difference:</b> Số tiền thắng/thua từ nền tảng (<b>Số âm màu đỏ → Thành viên đang lãi</b>, <i>ví dụ ảnh bên -6,060 → lãi 6,060).</i></li>
+      </ul>
+            </div>
+          </div>
+          <div>
+            <img src="https://i.ibb.co/PzMDrsfK/B-c-1-2.png" alt="Bước 1.2 - Query" onclick="openModal(event,this)" />
+            <div class="caption">Hình: Thông tin cơ bản tổng quan về thành viên.</div>
           </div>
         </div>
-        <div>
-  	<img src="https://i.ibb.co/PzMDrsfK/B-c-1-2.png" alt="Bước 1.2 - Query" onclick="openModal(event,this)" />
-          <div class="caption">Hình: thông tin tổng quan user.</div>
-        </div>
       </div>
-    </div>
 
-    <!-- STEP 3 -->
-    <div class="card">
-      <div class="step">
-        <div>
-          <h2>Bước 3 — Risk control: kiểm tra IP / thiết bị</h2>
-          <div class="meta">Tab <strong>Risk control data</strong>. Mục đích: Xác định xem thành viên có tạo nhiều tài khoản để trục lợi lạm dụng khuyến mãi hay không. Ví dụ: Thành viên chỉ có 1 IP, 1 thiết bị → có thể tiếp tục. Nhưng nếu thành viên có nhiều hơn 2 IP hoặc Thiết bị cần kiểm tra các IP/ thiết bị trùng có vấn đề không.</div>
-          <div class="checklist">
-            <label><input type="checkbox" /> Kiểm tra Binding Device (số thiết bị)</label>
-            <label><input type="checkbox" /> Kiểm tra Login IP (số IP)</label>
-            <label><input type="checkbox" /> Đánh giá số tài khoản liên quan cùng IP</label>
-<span class="badge warn"><h2>👉 Mục tiêu BƯỚC 3: Xác định thông tin IP/ thiết bị để đánh giá tổng quan trước về tài khoản thành viên.</h2></span>
+      <!-- STEP 2 -->
+      <div class="card">
+        <div class="step">
+          <div>
+            <h2>Bước 2 — Kiểm tra tổng quan thông tin người dùng (rút gọn)</h2>
+            <div class="meta">Chỉ quan tâm 4 mục chính: <strong>Total Withdrawal Amount, Total Recharge Amount, Current Cash Balance, Recharge & Withdrawal Difference</strong>.</div>
+            <div class="checklist">
+              <label><input type="checkbox" /> Total Withdrawal Amount (đã rút / đang rút)</label>
+              <label><input type="checkbox" /> Total Recharge Amount (tổng nạp)</label>
+              <label><input type="checkbox" /> Current Cash Balance (số dư hiện tại)</label>
+              <label><input type="checkbox" /> Recharge & Withdrawal Difference (thắng / thua)</label>
+            </div>
+          </div>
+          <div>
+        <img src="https://i.ibb.co/PzMDrsfK/B-c-1-2.png" alt="Bước 1.2 - Query" onclick="openModal(event,this)" />
+            <div class="caption">Hình: thông tin tổng quan user.</div>
           </div>
         </div>
-        <div>
-          <img src="https://i.ibb.co/60kBX9hh/B-c-3.png" alt="Bước 3 - Risk control" onclick="openModal(event,this)" />
-          <div class="caption">Hình: Risk control data.</div>
-        </div>
-      </div>
-    </div>
-<!-- STEP 4 -->
-<div class="card">
-  <div class="step step-2col">
-
-    <!-- CỘT TRÁI -->
-    <div class="step-content">
-      <h2>Bước 4 — Truy xuất nguồn tiền (Asset Changes)</h2>
-
-      <div class="meta">
-        <b>Bước quan trọng nhất:</b> xác định tiền là
-        <strong>nạp thực</strong> hay <strong>nhận thưởng</strong>.
-        Nếu không có nạp → kiểm tra <b>Asset Changes</b> mục <b>Change Reason</b>.
-        Với tiền thưởng nhỏ (1,3,5,7) trùng IP → có thể khấu tiền.
       </div>
 
-      <div class="checklist">
-
-        <label>
-          <input type="checkbox" />
-          Mở tab Recharge Record → kiểm tra trạng thái <em>Received</em>
-        </label>
-  <div class="indent-block">
-
-  <p class="indent-text">
-  </p>
-
-  <ul class="indent-list">
-    <li>Nếu có nạp tiền hợp lệ → ghi nhận → có thể sang bước 5.</li>
-    <li>Nếu không có nạp tiền → bắt buộc sang Asset Changes.</li>
-    </ul>
-
-</div>
-
-
-        <label>
-          <input type="checkbox" />
-          Nếu không có nạp → mở <b>Asset Changes</b> và filter <b>Change Reason</b>
-        </label>
-
-  <div class="indent-block">
-
-  <p class="indent-text">
-    Tại Change Reason, chọn và kiểm tra các nguồn sau
-    (đặc biệt với thành viên mới):
-  </p>
-
-  <ul class="indent-list">
-    <li>Recharge</li>
-    <li>Withdrawal</li>
-    <li>Daily Leaderboard</li>
-    <li>Weekly Leaderboard</li>
-    <li>Invitation Withdrawal Reward</li>
-    <li>Team Reward</li>
-    <li>Inbox Message Reward</li>
-    <li>Sharing Bonus</li>
-    <li>Video Reward</li>
-    <li>Special Invite Bonus</li>
-    <li>Free Returnee Bonus</li>
-    <li>Hoặc các mục được tô màu tiếng Trung trong hệ thống</li>
-  </ul>
-
-</div>
-
-        <label>
-          <input type="checkbox" />
-          Đánh dấu nguồn thưởng đáng ngờ như 1, 3, 5, 7 đồng (cần có điều kiện cụ thể để rút số tiền cược thắng từ các loại tiền thưởng này).
-        </label>
-
-        <div class="badge warn">
-          <h2>👉 Mục tiêu BƯỚC 4: Xác định thông tin IP / thiết bị
-          để đánh giá tổng quan tài khoản thành viên. </h2>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- CỘT PHẢI -->
-    <div class="step-media">
-      <img src="https://i.ibb.co/pjHY85Sj/B-c-4-1.png" onclick="openModal(event,this)" />
-      <div class="caption">4.1: Recharge Record (kiểm tra nạp).</div>
-
-      <img src="https://i.ibb.co/YBcbP72N/B-c-4-2.png" onclick="openModal(event,this)" />
-      <div class="caption">4.2: Danh sách Change Reason.</div>
-
-      <img src="https://i.ibb.co/j9H4gwN9/B-c-4-3.png" onclick="openModal(event,this)" />
-      <div class="caption">4.3: Ví dụ về các mục được tô màu bằn tiếng trung.</div>
-
-      <img src="https://i.ibb.co/PZ1THJKD/B-c-4-3-1.png" onclick="openModal(event,this)" />
-      <div class="caption">4.3.1: Ví dụ về các mục được tô màu bằn tiếng trung.</div>
-    </div>
-
-  </div>
-</div>
-
-    <!-- STEP 5 -->
-    <div class="card">
-      <div class="step">
-        <div>
-          <h2>Bước 5 — Bet Record: xác nhận hành vi chơi</h2>
-          <div class="meta">Tab <strong>Bet Record</strong> — kiểm tra trò chơi, tổng cược, member win/loss.</div>
-          <div class="checklist">
-            <label><input type="checkbox" /> Xác định thời điểm mà thành viên nạp/ nhận thưởng đến lúc rút tiền</label>
-            <label><input type="checkbox" /> Kiểm tra Total Bet Amount và Member Win/Loss để xem họ chơi những game nào, lãi lỗ ra sao</label>
-
-<span class="badge warn"><h2>👉 Mục tiêu BƯỚC 5: Xác nhận thành viên chơi game gì và kết quả chơi có lãi hợp lý.</h2></span>
+      <!-- STEP 3 -->
+      <div class="card">
+        <div class="step">
+          <div>
+            <h2>Bước 3 — Risk control: kiểm tra IP / thiết bị</h2>
+            <div class="meta">Tab <strong>Risk control data</strong>. Mục đích: Xác định xem thành viên có tạo nhiều tài khoản để trục lợi lạm dụng khuyến mãi hay không. Ví dụ: Thành viên chỉ có 1 IP, 1 thiết bị → có thể tiếp tục. Nhưng nếu thành viên có nhiều hơn 2 IP hoặc Thiết bị cần kiểm tra các IP/ thiết bị trùng có vấn đề không.</div>
+            <div class="checklist">
+              <label><input type="checkbox" /> Kiểm tra Binding Device (số thiết bị)</label>
+              <label><input type="checkbox" /> Kiểm tra Login IP (số IP)</label>
+              <label><input type="checkbox" /> Đánh giá số tài khoản liên quan cùng IP</label>
+    <span class="badge warn"><h2>👉 Mục tiêu BƯỚC 3: Xác định thông tin IP/ thiết bị để đánh giá tổng quan trước về tài khoản thành viên.</h2></span>
+            </div>
+          </div>
+          <div>
+            <img src="https://i.ibb.co/60kBX9hh/B-c-3.png" alt="Bước 3 - Risk control" onclick="openModal(event,this)" />
+            <div class="caption">Hình: Risk control data.</div>
           </div>
         </div>
-        <div>
-          <img src="https://i.ibb.co/wFmZNpQQ/B-c-5.png" alt="Bước 5 - Bet Record" onclick="openModal(event,this)" />
-          <div class="caption">Hình: Bet Record.</div>
-        </div>
       </div>
-    </div>
 
-    <!-- STEP 6 -->
-    <div class="card">
-      <div class="step">
-        <div>
-          <h2>Bước 6 — Order Data: kiểm tra chi tiết các cược</h2>
-          <div class="meta">Tab <strong>Order Data</strong>. Kiểm tra các trường hợp bị xem là vi phạm ❌.</div>
-<div class="indent-block">
+      <!-- STEP 4 -->
+      <div class="card">
+        <div class="step step-2col">
+          <div class="step-content">
+            <h2>Bước 4 — Truy xuất nguồn tiền (Asset Changes)</h2>
+            <div class="meta">
+              <b>Bước quan trọng nhất:</b> xác định tiền là
+              <strong>nạp thực</strong> hay <strong>nhận thưởng</strong>.
+              Nếu không có nạp → kiểm tra <b>Asset Changes</b> mục <b>Change Reason</b>.
+              Với tiền thưởng nhỏ (1,3,5,7) trùng IP → có thể khấu tiền.
+            </div>
 
-  <p class="indent-text">
+            <div class="checklist">
 
-
-    🔴 Vi phạm mức cược tối thiểu cho các thành viên <b>nạp lần đầu.</b>
-  </p>
-
-  <ul class="indent-list">
-    <li><b>Quay hũ JILI/PG</b>: cược <b>dưới 2</b></li>
-    <li>Sảnh TB (Mines, Vortex, …): cược <b>dưới 5</b>
-</li>
-    
-→ Xem là cược đối phó để lạm dụng tiền khuyến mãi, vi phạm.
-
-  <p class="indent-text"> </div>
-<div class="indent-block">
-   🔴 Vi phạm tỷ lệ cược  </p>
-
-  <li>Các game như:<b> Aviator</b> hay <b>Chicken Road</b>,... Tỉ lệ cược thấp dưới <b>1.25</b> liên tục từ 4 kỳ.</li>
-→ Xem là cược đối phó để lạm dụng tiền khuyến mãi, vi phạm.
-</ul></div>
-<style>
-  .indent-block {
-    margin-left: 1.5em;   /* chỉnh 1em – 3em tuỳ ý */
-  }
-
-  .indent-text {
-    margin: 6px 0;
-  }
-
-  .indent-list {
-    margin: 4px 0 12px 1.5em;
-    padding-left: 1em;
-  }
-</style>
-
-
-
-
-          <div class="checklist">
-            <label><input type="checkbox" /> Lọc theo ngày đặt cược từ lúc nạp/ nhận thưởng đến hiện tại</label>
-            <label><input type="checkbox" /> Xác định các lần cược nhỏ bất thường</label>
-            <label><input type="checkbox" /> Nếu có vi phạm: không duyệt</label>
-          </div>
-<span class="badge warn"><h2>👉 Mục tiêu BƯỚC 6: Xác định cách đặt cược có hợp lệ hay không, tránh trường hợp đánh đối phó để rút tiền lạm dụng khuyến mãi.</h2></span>
+              <label>
+                <input type="checkbox" />
+                Mở tab Recharge Record → kiểm tra trạng thái <em>Received</em>
+              </label>
+        <div class="indent-block">
+        <ul class="indent-list">
+          <li>Nếu có nạp tiền hợp lệ → ghi nhận → có thể sang bước 5.</li>
+          <li>Nếu không có nạp tiền → bắt buộc sang Asset Changes.</li>
+        </ul>
         </div>
 
-        <div>
-          <img src="https://i.ibb.co/LDPVqVxY/B-c-6.png" alt="Bước 6 - Order Data" onclick="openModal(event,this)" />
-          <div class="caption">Hình: Order Data.</div>
-        </div>
-      </div>
-    </div>
+              <label>
+                <input type="checkbox" />
+                Nếu không có nạp → mở <b>Asset Changes</b> và filter <b>Change Reason</b>
+              </label>
 
-    <!-- STEP 7 -->
-    <div class="card">
-      <div class="step">
-        <div>
-          <h2>Bước 7 — Quyết định cuối cùng: Phê duyệt / Từ chối / Treo</h2>
-          <div class="meta">Dùng các nút trong cột Operate:</div>
-          <ul>
-            <li><strong>Review Approved (xanh)</strong> — phê duyệt lệnh rút (nếu mọi thứ hợp lệ)</li>
-            <li><strong>Review Rejected (đỏ)</strong> — chối lệnh rút tiền nếu có bất thường</li>
-            <li><strong>To be submitted</strong> — treo cho ngân hàng/người xử lý bên thứ 3 (giao dịch chưa thành công)</li>
-            <li><strong>Submit for Review (vàng)</strong> — chuyển lên Risk cao hơn (lớn tiền / nghi vấn khó xử lý)</li>
+        <div class="indent-block">
+          <p class="indent-text">Tại Change Reason, chọn và kiểm tra các nguồn sau (đặc biệt với thành viên mới):</p>
+          <ul class="indent-list">
+            <li>Recharge</li>
+            <li>Withdrawal</li>
+            <li>Daily Leaderboard</li>
+            <li>Weekly Leaderboard</li>
+            <li>Invitation Withdrawal Reward</li>
+            <li>Team Reward</li>
+            <li>Inbox Message Reward</li>
+            <li>Sharing Bonus</li>
+            <li>Video Reward</li>
+            <li>Special Invite Bonus</li>
+            <li>Free Returnee Bonus</li>
+            <li>Hoặc các mục được tô màu tiếng Trung trong hệ thống</li>
           </ul>
-          <div class="checklist">
-            <label><input type="checkbox" /> Đã hoàn tất Bước 3–6 và không có rủi ro → nhấn <strong>Review Approved</strong></label>
-            <label><input type="checkbox" /> Phát hiện nhẹ → nhấn <strong>Review Rejected</strong> (chỉ từ chối lệnh)</label>
-            <label><input type="checkbox" /> Giao dịch lỗi/ngân hàng → nhấn <strong>To be submitted</strong></label>
-            <label><input type="checkbox" /> Đơn tiền lớn/ khó xử lý → nhấn <strong>Submit for Review</strong></label>
-<span class="badge warn"><h2>👉 Mục tiêu BƯỚC 7: Ra quyết định cuối cùng sau khi đã kiểm tra đầy đủ các bước trước.</h2></span>
+        </div>
+
+              <label>
+                <input type="checkbox" />
+                Đánh dấu nguồn thưởng đáng ngờ như 1, 3, 5, 7 đồng (cần có điều kiện cụ thể để rút số tiền cược thắng từ các loại tiền thưởng này).
+              </label>
+
+              <div class="badge warn">
+                <h2>👉 Mục tiêu BƯỚC 4: Xác định chính xác nguồn gốc tiền rút của thành viên.</h2>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="step-media">
+            <img src="https://i.ibb.co/pjHY85Sj/B-c-4-1.png" onclick="openModal(event,this)" />
+            <div class="caption">4.1: Recharge Record (kiểm tra nạp).</div>
+
+            <img src="https://i.ibb.co/YBcbP72N/B-c-4-2.png" onclick="openModal(event,this)" />
+            <div class="caption">4.2: Danh sách Change Reason.</div>
+
+            <img src="https://i.ibb.co/j9H4gwN9/B-c-4-3.png" onclick="openModal(event,this)" />
+            <div class="caption">4.3: Ví dụ về các mục được tô màu bằng tiếng Trung.</div>
+
+            <img src="https://i.ibb.co/PZ1THJKD/B-c-4-3-1.png" onclick="openModal(event,this)" />
+            <div class="caption">4.3.1: Ví dụ thêm.</div>
           </div>
         </div>
-        <div>
-          <img src="https://i.ibb.co/CpRCGPGS/B-c-7.png" alt="Bước 7 - Approve buttons" onclick="openModal(event,this)" />
-          <div class="caption">Hình: các nút quyết định.</div>
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="card">
+        <div class="step">
+          <div>
+            <h2>Bước 5 — Bet Record: xác nhận hành vi chơi</h2>
+            <div class="meta">Tab <strong>Bet Record</strong> — kiểm tra trò chơi, tổng cược, member win/loss.</div>
+            <div class="checklist">
+              <label><input type="checkbox" /> Xác định thời điểm mà thành viên nạp/ nhận thưởng đến lúc rút tiền</label>
+              <label><input type="checkbox" /> Kiểm tra Total Bet Amount và Member Win/Loss để xem họ chơi những game nào, lãi lỗ ra sao</label>
+
+      <span class="badge warn"><h2>👉 Mục tiêu BƯỚC 5: Xác nhận thành viên chơi game gì và kết quả chơi có lãi hợp lý.</h2></span>
+            </div>
+          </div>
+          <div>
+            <img src="https://i.ibb.co/wFmZNpQQ/B-c-5.png" alt="Bước 5 - Bet Record" onclick="openModal(event,this)" />
+            <div class="caption">Hình: Bet Record.</div>
+          </div>
         </div>
+      </div>
+
+      <!-- STEP 6 -->
+      <div class="card">
+        <div class="step">
+          <div>
+            <h2>Bước 6 — Order Data: kiểm tra chi tiết các cược</h2>
+            <div class="meta">Tab <strong>Order Data</strong>. Kiểm tra các trường hợp bị xem là vi phạm ❌.</div>
+    <div class="indent-block">
+      <p class="indent-text">🔴 Vi phạm mức cược tối thiểu cho các thành viên <b>nạp lần đầu.</b></p>
+      <ul class="indent-list">
+        <li><b>Quay hũ JILI/PG</b>: cược <b>dưới 2</b></li>
+        <li>Sảnh TB (Mines, Vortex, …): cược <b>dưới 5</b></li>
+      </ul>
+
+      <p class="indent-text">🔴 Vi phạm tỷ lệ cược</p>
+      <ul class="indent-list">
+        <li>Các game như:<b> Aviator</b> hay <b>Chicken Road</b>,... Tỉ lệ cược thấp dưới <b>1.25</b> liên tục từ 4 kỳ.</li>
+      </ul>
+    </div>
+
+            <div class="checklist">
+              <label><input type="checkbox" /> Lọc theo ngày đặt cược từ lúc nạp/ nhận thưởng đến hiện tại</label>
+              <label><input type="checkbox" /> Xác định các lần cược nhỏ bất thường</label>
+              <label><input type="checkbox" /> Nếu có vi phạm: không duyệt</label>
+            </div>
+      <span class="badge warn"><h2>👉 Mục tiêu BƯỚC 6: Xác định cách đặt cược có hợp lệ hay không, tránh trường hợp đánh đối phó để rút tiền lạm dụng khuyến mãi.</h2></span>
+          </div>
+
+          <div>
+            <img src="https://i.ibb.co/LDPVqVxY/B-c-6.png" alt="Bước 6 - Order Data" onclick="openModal(event,this)" />
+            <div class="caption">Hình: Order Data.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 7 -->
+      <div class="card">
+        <div class="step">
+          <div>
+            <h2>Bước 7 — Quyết định cuối cùng: Phê duyệt / Từ chối / Treo</h2>
+            <div class="meta">Dùng các nút trong cột Operate:</div>
+            <ul>
+              <li><strong>Review Approved (xanh)</strong> — phê duyệt lệnh rút (nếu mọi thứ hợp lệ)</li>
+              <li><strong>Review Rejected (đỏ)</strong> — chối lệnh rút tiền nếu có bất thường</li>
+              <li><strong>To be submitted</strong> — treo cho ngân hàng/người xử lý bên thứ 3 (giao dịch chưa thành công)</li>
+              <li><strong>Submit for Review (vàng)</strong> — chuyển lên Risk cao hơn (lớn tiền / nghi vấn khó xử lý)</li>
+            </ul>
+            <div class="checklist">
+              <label><input type="checkbox" /> Đã hoàn tất Bước 3–6 và không có rủi ro → nhấn <strong>Review Approved</strong></label>
+              <label><input type="checkbox" /> Phát hiện nhẹ → nhấn <strong>Review Rejected</strong> (chỉ từ chối lệnh)</label>
+              <label><input type="checkbox" /> Giao dịch lỗi/ngân hàng → nhấn <strong>To be submitted</strong></label>
+              <label><input type="checkbox" /> Đơn tiền lớn/ khó xử lý → nhấn <strong>Submit for Review</strong></label>
+      <span class="badge warn"><h2>👉 Mục tiêu BƯỚC 7: Ra quyết định cuối cùng sau khi đã kiểm tra đầy đủ các bước trước.</h2></span>
+            </div>
+          </div>
+          <div>
+            <img src="https://i.ibb.co/CpRCGPGS/B-c-7.png" alt="Bước 7 - Approve buttons" onclick="openModal(event,this)" />
+            <div class="caption">Hình: các nút quyết định.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Phiên bản nhanh (checklist in 1 line)</h3>
+        <div class="meta">1) Mở danh sách → 2) Mở chi tiết → 3) Kiểm tra IP/ Thiết bị → 4) Truy xuất nguồn tiền → 5) Kiểm tra game đã chơi → 6) Kiểm tra đơn cược → 7) Quyết định
+    <strong> Nguyên tắc duyệt đơn:
+    <ul class="indent-list">
+        <li>Không rõ nguồn tiền → không duyệt</li>
+        <li>Không chắc → hỏi cấp trên</li>
+        <li>Không suy đoán theo cảm tính</li>
+        <li>Mọi quyết định đều phải giải thích được</li>
+      </ul> </strong>
+        </div>
+        <div class="footer"></div>
       </div>
     </div>
 
-    <div class="card">
-      <h3>Phiên bản nhanh (checklist in 1 line)</h3>
-      <div class="meta">1) Mở danh sách → 2) Mở chi tiết → 3) Kiểm tra IP/ Thiết bị → 4) Truy xuất nguồn tiền → 5) Kiểm tra game đã chơi → 6) Kiểm tra đơn cược → 7) Quyết định
-<strong> Nguyên tắc duyệt đơn:
-<ul class="indent-list">
-    <li>Không rõ nguồn tiền → không duyệt</li>
-    <li>Không chắc → hỏi cấp trên</li>
-    <li>Không suy đoán theo cảm tính</li>
-    <li>Weekly Leaderboard</li>
-    <li>Mọi quyết định đều phải giải thích được</li>
-  </ul> </strong>
+    <!-- Chinese content (copy of English for now) -->
 
+    <div id="content-cn" style="display:none">
+      <!-- copy EXACT content above (English) — user will replace text/images later -->
+      <div class="card">
 
-
-</div>
-      <div class="footer">
-       
-
+        <h1>Quy trình duyệt đơn rút tiền — Hướng dẫn cho người mới</h1>
+        <div class="meta">Mục tiêu: hướng dẫn tuần tự (Bước 1 → Bước 7). Mỗi bước kèm hình minh họa. Click vào ảnh để phóng to.</div>
       </div>
+
+      <!-- STEP 1 -->
+      <div class="card">
+        <div class="step">
+          <div>
+            <h2>Bước 1 — Mở danh sách đơn chờ xử lý</h2>
+            <div class="meta">Vào <strong>首页 → 提现管理 → 提现订单 </strong> để xem các đơn <em>待审核</em>. Chỉ thao tác với dòng không có biểu tượng khóa.</div>
+            <div class="controls">
+              <span class="badge">Tip</span>
+              <small class="note" style="margin-left:8px">Tại cột Time, nhấn vào button ▲ để sắp xếp đơn theo thứ tự từ cũ đến mới (đảm bảo các đơn cũ được xử lý trước).</small>
+            </div>
+            <div class="checklist">
+              <label><input type="checkbox" /> Đảm bảo đang ở tab <strong>提现订单</strong></label>
+              <label><input type="checkbox" /> Lọc trạng thái = <em>待审核</em></label>
+            </div>
+          </div>
+
+          <div>
+            <img src="https://i.ibb.co/4RWnRbbX/B-c-1.png" alt="Bước 1 - Withdrawal Orders" onclick="openModal(event,this)" />
+            <div class="caption">Hình: danh sách các đơn hàng cần được xử lý.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 1.1 -->
+      <div class="card">
+        <div class="step">
+          <div>
+            <h2>Bước 1.1 — Kiểm tra dòng đơn</h2>
+            <div class="meta">Chỉ chọn các đơn chưa bị khoá; tránh thao tác lên dòng có icon khóa.</div>
+            <div class="checklist">
+              <label><input type="checkbox" /> Kiểm tra biểu tượng khoá</label>
+              <label><input type="checkbox" /> Chỉ chọn đơn không khóa</label>
+              <label><input type="checkbox" /> Nhấn <strong>查询</strong> để xem chi tiết</label>
+
+              <span class="badge warn" style="display:inline-block;margin-top:8px;padding:8px 12px"><strong>👉 Mục tiêu BƯỚC 1:</strong> Tìm đơn rút tiền cần được xét duyệt để mở xem chi tiết.</span>
+            </div>
+          </div>
+          <div>
+            <img src="https://i.ibb.co/4cXyQvL/B-1-1.png" alt="Bước 1.1" onclick="openModal(event,this)" />
+            <div class="caption">Hình: nhận diện đơn chưa khóa, nút <b>Query</b> mở chi tiết đơn.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 1.2 -->
+      <div class="card">
+        <div class="step">
+          <div>
+            <h2>Giới thiệu sơ bộ tổng quan về thành viên.</h2>
+            <div class="meta"><strong>Mục đích:</strong> Nhìn nhanh tình trạng tài khoản, không dùng để quyết định duyệt.</div>
+            <div class="checklist">
+  <b>Các mục cần hiểu:</b>
+              <ul>
+      <li><b>用户UID:</b> Mã người dùng.</li>
+      <li><b>总流水金额：</b> Tổng tiền đã cược.</li>
+      <li><b>总提现金额：</b> Tổng tiền đã rút. <i>(Ví dụ ảnh bên: Tổng rút: 75210 (Đã rút 75210 , Đang rút 0). Trường hợp thành viên lần đầu rút tiền thì mục <b>已提现 = 0 → rút lần đầu.</b>)</i></li>
+      <li><b>注册时间：</b> Thời gian đăng ký.</li>
+      <li><b>登录时间：</b> Lần đăng nhập gần nhất.</li>
+      <li><b>提款备注：</b> Ghi chú rút tiền của thành viên.</li>
+      <li><b>总充值金额：</b> Tổng tiền đã nạp.</li>
+     <li><b>渠道来源：</b> Kênh đăng ký.</li>
+     <li><b>当前Cash余额：</b> Số dư hiện tại.</li>
+     <li><b>充提差：</b> Số tiền thắng/thua từ nền tảng (<b>Số âm màu đỏ → Thành viên đang lãi</b>, <i>ví dụ ảnh bên -21310.36 → lãi 21310.36).</i></li>
+      </ul>
+            </div>
+          </div>
+          <div>
+            <img src="https://i.ibb.co/0VhYZCLx/B-c-2.png" alt="Bước 1.2 - Query" onclick="openModal(event,this)" />
+            <div class="caption">Hình: Thông tin cơ bản tổng quan về thành viên.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="card">
+        <div class="step">
+          <div>
+            <h2>Bước 2 — Kiểm tra tổng quan thông tin người dùng (rút gọn)</h2>
+            <div class="meta">Chỉ quan tâm 4 mục chính: <strong>总提现金额, 总充值金额, 当前Cash余额,  充提差</strong>.</div>
+            <div class="checklist">
+              <label><input type="checkbox" /> 总提现金额：(đã rút / đang rút)</label>
+              <label><input type="checkbox" /> 总充值金额： (tổng nạp)</label>
+              <label><input type="checkbox" /> 当前Cash余额： (số dư hiện tại)</label>
+              <label><input type="checkbox" /> 充提差：(thắng / thua)</label>
+            </div>
+          </div>
+          <div>
+        <img src="https://i.ibb.co/0VhYZCLx/B-c-2.png" alt="Bước 1.2 - Query" onclick="openModal(event,this)" />
+            <div class="caption">Hình: thông tin tổng quan user.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="card">
+        <div class="step">
+          <div>
+            <h2>Bước 3 — 风控数据: kiểm tra IP / thiết bị</h2>
+            <div class="meta">Tab <strong>风控数据</strong>. Mục đích: Xác định xem thành viên có tạo nhiều tài khoản để trục lợi lạm dụng khuyến mãi hay không. Ví dụ: Thành viên chỉ có 1 IP, 1 thiết bị → có thể tiếp tục. Nhưng nếu thành viên có nhiều hơn 2 IP hoặc Thiết bị cần kiểm tra các IP/ thiết bị trùng có vấn đề không.</div>
+            <div class="checklist">
+              <label><input type="checkbox" /> Kiểm tra Binding Device (số thiết bị)</label>
+              <label><input type="checkbox" /> Kiểm tra Login IP (số IP)</label>
+              <label><input type="checkbox" /> Đánh giá số tài khoản liên quan cùng IP</label>
+    <span class="badge warn"><h2>👉 Mục tiêu BƯỚC 3: Xác định thông tin IP/ thiết bị để đánh giá tổng quan trước về tài khoản thành viên.</h2></span>
+            </div>
+          </div>
+          <div>
+            <img src="https://i.ibb.co/xWjZqnq/B-c-3.png" alt="Bước 3 - Risk control" onclick="openModal(event,this)" />
+            <div class="caption">Hình: 风控数据.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="card">
+        <div class="step step-2col">
+          <div class="step-content">
+            <h2>Bước 4 — Truy xuất nguồn tiền (充值记录 & 资产变动)</h2>
+            <div class="meta">
+              <b>Bước quan trọng nhất:</b> xác định tiền là
+              <strong>nạp thực</strong> hay <strong>nhận thưởng</strong>.
+              Nếu không có nạp → kiểm tra <b>资产变动</b> mục <b>变动原因：</b>.
+              Với tiền thưởng nhỏ (1,3,5,7) trùng IP → có thể khấu tiền.
+            </div>
+
+            <div class="checklist">
+
+              <label>
+                <input type="checkbox" />
+                Mở tab 充值记录 → kiểm tra trạng thái <em>到账</em>
+              </label>
+        <div class="indent-block">
+        <ul class="indent-list">
+          <li>Nếu có nạp tiền hợp lệ → ghi nhận → có thể sang bước 5.</li>
+          <li>Nếu không có nạp tiền → bắt buộc sang 资产变动.</li>
+        </ul>
+        </div>
+
+              <label>
+                <input type="checkbox" />
+                Nếu không có nạp → mở <b>资产变动</b> và filter <b>变动原因</b>
+              </label>
+
+        <div class="indent-block">
+          <p class="indent-text">Tại 变动原因, chọn và kiểm tra các nguồn sau (đặc biệt với thành viên mới):</p>
+          <ul class="indent-list">
+            <li>充值</li>
+            <li>提现</li>
+            <li>排行榜日榜</li>
+            <li>排行榜周榜</li>
+            <li>邀请转盘</li>
+            <li>团队奖励</li>
+            <li>站内信奖励</li>
+            <li>排行榜月榜</li>
+            <li>兑换码奖励</li>
+            <li>分享赠金</li>
+            <li>视频奖励</li>
+            <li>VIP每周奖励</li>
+            <li>回归福利奖励</li>
+            <li>Hoặc các mục được tô màu tiếng Trung trong hệ thống</li>
+          </ul>
+        </div>
+
+              <label>
+                <input type="checkbox" />
+                Đánh dấu nguồn thưởng đáng ngờ như 1, 3, 5, 7 đồng (cần có điều kiện cụ thể để rút số tiền cược thắng từ các loại tiền thưởng này).
+              </label>
+
+              <div class="badge warn">
+                <h2>👉 Mục tiêu BƯỚC 4: Xác định chính xác nguồn gốc tiền rút của thành viên.</h2>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="step-media">
+            <img src="https://i.ibb.co/Lz6yYfzH/b-c-4.png" onclick="openModal(event,this)" />
+            <div class="caption">4.1: 充值记录 (kiểm tra nạp).</div>
+
+            <img src="https://i.ibb.co/0ynnVMNp/b-c-4-1.png" onclick="openModal(event,this)" />
+            <div class="caption">4.2: Danh sách 订单状态：.</div>
+
+            <img src="https://i.ibb.co/TBJbmDth/B-c-4-2.png" onclick="openModal(event,this)" />
+            <div class="caption">4.3: Ví dụ về các mục được tô màu bằng tiếng Trung.</div>
+
+            <img src="https://i.ibb.co/B5vkS9ZX/B-c-4-3.png" onclick="openModal(event,this)" />
+            <div class="caption">4.3.1: Ví dụ thêm.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="card">
+        <div class="step">
+          <div>
+            <h2>Bước 5 — 投注纪录: xác nhận hành vi chơi</h2>
+            <div class="meta">Tab <strong>投注纪录</strong> — kiểm tra trò chơi, tổng cược, member win/loss.</div>
+            <div class="checklist">
+              <label><input type="checkbox" /> Xác định thời điểm mà thành viên nạp/ nhận thưởng đến lúc rút tiền</label>
+              <label><input type="checkbox" /> Kiểm tra 返奖金额 và 会员输赢 để xem họ chơi những game nào, lãi lỗ ra sao</label>
+
+      <span class="badge warn"><h2>👉 Mục tiêu BƯỚC 5: Xác nhận thành viên chơi game gì và kết quả chơi có lãi hợp lý.</h2></span>
+            </div>
+          </div>
+          <div>
+            <img src="https://i.ibb.co/1tfnd7Q2/B-c-5.png" alt="Bước 5 - Bet Record" onclick="openModal(event,this)" />
+            <div class="caption">Hình: 投注纪录.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 6 -->
+      <div class="card">
+        <div class="step">
+          <div>
+            <h2>Bước 6 — 订单数据: kiểm tra chi tiết các cược</h2>
+            <div class="meta">Tab <strong>订单数据</strong>. Kiểm tra các trường hợp bị xem là vi phạm ❌.</div>
+    <div class="indent-block">
+      <p class="indent-text">🔴 Vi phạm mức cược tối thiểu cho các thành viên <b>nạp lần đầu.</b></p>
+      <ul class="indent-list">
+        <li><b>Quay hũ JILI/PG</b>: cược <b>dưới 2</b></li>
+        <li>Sảnh TB (Mines, Vortex, …): cược <b>dưới 5</b></li>
+      </ul>
+
+      <p class="indent-text">🔴 Vi phạm tỷ lệ cược</p>
+      <ul class="indent-list">
+        <li>Các game như:<b> Aviator</b> hay <b>Chicken Road</b>,... Tỉ lệ cược thấp dưới <b>1.25</b> liên tục từ 4 kỳ.</li>
+      </ul>
+    </div>
+
+            <div class="checklist">
+              <label><input type="checkbox" /> Lọc theo ngày đặt cược từ lúc nạp/ nhận thưởng đến hiện tại</label>
+              <label><input type="checkbox" /> Xác định các lần cược nhỏ bất thường</label>
+              <label><input type="checkbox" /> Nếu có vi phạm: không duyệt</label>
+            </div>
+      <span class="badge warn"><h2>👉 Mục tiêu BƯỚC 6: Xác định cách đặt cược có hợp lệ hay không, tránh trường hợp đánh đối phó để rút tiền lạm dụng khuyến mãi.</h2></span>
+          </div>
+
+          <div>
+            <img src="https://i.ibb.co/TM6rTKBN/B-c-6.png" alt="Bước 6 - Order Data" onclick="openModal(event,this)" />
+            <div class="caption">Hình: 订单数据.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 7 -->
+      <div class="card">
+        <div class="step">
+          <div>
+            <h2>Bước 7 — Quyết định cuối cùng: Phê duyệt / Từ chối / Treo</h2>
+            <div class="meta">Dùng các nút trong cột 操作:</div>
+            <ul>
+              <li><strong>审核通过 (xanh)</strong> — phê duyệt lệnh rút (nếu mọi thứ hợp lệ)</li>
+              <li><strong>审核拒绝 (đỏ)</strong> — chối lệnh rút tiền nếu có bất thường</li>
+              <li><strong>待提交</strong> — treo cho ngân hàng/người xử lý bên thứ 3 (giao dịch chưa thành công)</li>
+              <li><strong>提交审查 (vàng)</strong> — chuyển lên Risk cao hơn (lớn tiền / nghi vấn khó xử lý)</li>
+            </ul>
+            <div class="checklist">
+              <label><input type="checkbox" /> Đã hoàn tất Bước 3–6 và không có rủi ro → nhấn <strong>审核通过</strong></label>
+              <label><input type="checkbox" /> Phát hiện nhẹ → nhấn <strong>审核拒绝</strong> (chỉ từ chối lệnh)</label>
+              <label><input type="checkbox" /> Giao dịch lỗi/ngân hàng → nhấn <strong>待提交</strong></label>
+              <label><input type="checkbox" /> Đơn tiền lớn/ khó xử lý → nhấn <strong>提交审查</strong></label>
+      <span class="badge warn"><h2>👉 Mục tiêu BƯỚC 7: Ra quyết định cuối cùng sau khi đã kiểm tra đầy đủ các bước trước.</h2></span>
+            </div>
+          </div>
+          <div>
+            <img src="https://i.ibb.co/ksgzmQJY/B-c-7.png" alt="Bước 7 - Approve buttons" onclick="openModal(event,this)" />
+            <div class="caption">Hình: các nút quyết định.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Phiên bản nhanh (checklist in 1 line)</h3>
+        <div class="meta">1) Mở danh sách → 2) Mở chi tiết → 3) Kiểm tra IP/ Thiết bị → 4) Truy xuất nguồn tiền → 5) Kiểm tra game đã chơi → 6) Kiểm tra đơn cược → 7) Quyết định
+    <strong> Nguyên tắc duyệt đơn:
+    <ul class="indent-list">
+        <li>Không rõ nguồn tiền → không duyệt</li>
+        <li>Không chắc → hỏi cấp trên</li>
+        <li>Không suy đoán theo cảm tính</li>
+        <li>Mọi quyết định đều phải giải thích được</li>
+      </ul> </strong>
+        </div>
+        <div class="footer"></div>
+      </div>
+    </div>
+
+
+      <!-- other steps duplicated (omitted here for brevity but you can expand/copy as needed) -->
     </div>
 
   </div>
@@ -398,30 +670,47 @@
   </div>
 
   <script>
+    function showTab(lang){
+      const en = document.getElementById('content-en');
+      const cn = document.getElementById('content-cn');
+      const btnEn = document.getElementById('tab-en');
+      const btnCn = document.getElementById('tab-cn');
+      if(lang==='en'){
+        en.style.display = 'block';
+        cn.style.display = 'none';
+        btnEn.classList.add('active');
+        btnCn.classList.remove('active');
+      } else {
+        en.style.display = 'none';
+        cn.style.display = 'block';
+        btnEn.classList.remove('active');
+        btnCn.classList.add('active');
+      }
+      // close modal if open
+      closeModal();
+    }
+
     function openModal(evt, img){
       evt.stopPropagation();
       const modal = document.getElementById('modal');
       const modalImg = document.getElementById('modalImg');
       modalImg.src = img.src;
       modal.classList.add('open');
-      // prevent body scroll while modal open
       document.body.style.overflow = 'hidden';
     }
     function closeModal(){
       const modal = document.getElementById('modal');
       modal.classList.remove('open');
-      document.getElementById('modalImg').src = '';
+      const modalImg = document.getElementById('modalImg');
+      if(modalImg) modalImg.src = '';
       document.body.style.overflow = '';
     }
-    // ensure clicks on the large image don't close modal
     document.getElementById('modal').addEventListener('click', function(e){
       if(e.target && e.target.id === 'modalImg') e.stopPropagation();
     });
-    // close modal with Esc
     document.addEventListener('keydown', function(e){
       if(e.key === 'Escape') closeModal();
     });
   </script>
 </body>
 </html>
-
